@@ -1,0 +1,298 @@
+          body {
+               font-family: 'Sarabun', sans-serif;
+               background-color: #f4f6f9;
+          }
+
+          .sidebar {
+               height: 100vh;
+               background: linear-gradient(to bottom, #118032, #0a5320);
+               color: white;
+               box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+          }
+
+          .sidebar .nav-link {
+               color: rgba(255, 255, 255, 0.8);
+               transition: all 0.3s;
+               display: flex;
+               align-items: center;
+               gap: 10px;
+          }
+
+          .sidebar .nav-link i {
+               margin-right: 10px;
+          }
+
+          .sidebar .nav-link:hover,
+          .sidebar .nav-link.active {
+               background-color: rgba(255, 255, 255, 0.1);
+               color: white;
+          }
+
+          .dashboard-card {
+               transition: all 0.3s ease;
+               cursor: pointer;
+          }
+
+          .dashboard-card:hover {
+               transform: translateY(-10px);
+               box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          }
+
+          .activity-item {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+          }
+
+          .activity-badge {
+               background-color: #118032;
+               color: white;
+               border-radius: 50%;
+               padding: 0.2rem 0.5rem;
+               font-size: 0.8rem;
+          }
+
+          /* สร้างคลาสใหม่สำหรับปุ่มสีใส */
+          .btn-transparent {
+               background-color: transparent;
+               /* ทำให้พื้นหลังเป็นสีใส */
+               border: 1px solid #007bff;
+               /* เพิ่มเส้นขอบสีน้ำเงิน */
+               color: #007bff;
+               /* เปลี่ยนสีข้อความเป็นสีน้ำเงิน */
+          }
+
+          /* สไตล์เมื่อ hover */
+          .btn-transparent:hover {
+               background-color: rgba(0, 123, 255, 0.1);
+               /* เพิ่มพื้นหลังเมื่อ hover */
+               color: #0056b3;
+               /* เปลี่ยนสีข้อความเมื่อ hover */
+          }
+
+          .table-wrapper {
+               background: white;
+               padding: 20px;
+               border-radius: 10px;
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+
+          .table-header {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               margin-bottom: 20px;
+          }
+
+          .search-container {
+               position: relative;
+               width: 300px;
+          }
+
+          .search-box {
+               position: relative;
+               width: 100%;
+          }
+
+          .search-box input {
+               width: 100%;
+               padding: 10px 40px 10px 15px;
+               border: 1px solid #ddd;
+               border-radius: 5px;
+               outline: none;
+          }
+
+          .search-box .bi-search {
+               position: absolute;
+               right: 15px;
+               top: 50%;
+               transform: translateY(-50%);
+               color: #666;
+          }
+
+          .add-button {
+               background: #28a745;
+               color: white;
+               border: none;
+               padding: 10px 20px;
+               border-radius: 5px;
+               display: flex;
+               align-items: center;
+               gap: 8px;
+               cursor: pointer;
+               transition: background-color 0.3s;
+          }
+
+          .add-button:hover {
+               background: #218838;
+          }
+
+          table {
+               width: 100%;
+               border-collapse: collapse;
+               margin-bottom: 20px;
+          }
+
+          th,
+          td {
+               padding: 15px;
+               text-align: left;
+               border-bottom: 1px solid #ddd;
+          }
+
+          th {
+               background-color: #f8f9fa;
+               font-weight: 600;
+          }
+
+          td img {
+               width: 150px;
+               height: 100px;
+               object-fit: cover;
+               border-radius: 5px;
+          }
+
+          .actions {
+               gap: 8px;
+          }
+
+          .actions button {
+               padding: 6px 12px;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+          }
+
+          .btn-success {
+               background: #28a745;
+          }
+
+          .btn-warning {
+               background: #ffc107;
+          }
+
+          .btn-danger {
+               background: #dc3545;
+          }
+
+          .actions button:hover {
+               opacity: 0.9;
+          }
+
+          .close {
+               background: none;
+               border: none;
+               font-size: 24px;
+               cursor: pointer;
+          }
+
+          .btn {
+               padding: 8px 16px;
+               border: none;
+               cursor: pointer;
+               border-radius: 5px;
+          }
+
+          .btn-secondary {
+               background-color: #6c757d;
+               color: white;
+          }
+
+          .btn-danger {
+               background-color: #dc3545;
+               color: white;
+          }
+
+          .btn:hover {
+               opacity: 0.8;
+          }
+
+          .pagination {
+               display: flex;
+               justify-content: center;
+               gap: 10px;
+               margin-top: 20px;
+          }
+
+          .pagination-item {
+               padding: 8px 12px;
+               border: 1px solid #ddd;
+               border-radius: 4px;
+               color: #333;
+               text-decoration: none;
+          }
+
+          .pagination-item.active {
+               background: #007bff;
+               color: white;
+               border-color: #007bff;
+          }
+
+          tr:hover {
+               background-color: #f5f5f5;
+          }
+
+          .rich-editor {
+               border: 1px solid #dee2e6;
+               border-radius: 0.375rem;
+          }
+
+          .rich-editor .toolbar {
+               background-color: #f8f9fa;
+               border-bottom: 1px solid #dee2e6;
+               padding: 0.5rem;
+          }
+
+          .nutrient-table {
+               border: 1px solid #dee2e6;
+               border-radius: 0.375rem;
+               overflow: hidden;
+          }
+
+          .nutrient-table th {
+               background-color: #f8f9fa;
+               font-weight: 600;
+          }
+
+          .bordered-textarea {
+               border: 1px solid #f0eded;
+               /* กรอบหนา */
+               padding: 10px;
+               border-radius: 5px;
+          }
+
+.graph-container {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+.graph-item {
+     flex: 1;
+     padding: 1rem;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+     background-color: #f9f9f9;
+     max-width: 100%;
+     margin: 0 auto;
+}
+
+.graph-item h2 {
+     text-align: center;
+     margin-bottom: 1rem;
+}
+
+canvas {
+     width: 100% !important;
+     /* ใช้ความกว้างเต็ม */
+     height: 550px;
+     /* ปรับความสูงให้ใหญ่ขึ้น */
+}
+
+.controls {
+     display: flex;
+     gap: 10px;
+     justify-content: flex-start;
+     align-items: center;
+     margin: 20px 0;
+}

@@ -1,0 +1,1806 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Kanit', sans-serif;
+}
+
+body {
+     background: linear-gradient(135deg, #f6f9fe 0%, #e3f2fd 100%);
+}
+
+
+.nav-container {
+     background: white;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     position: sticky;
+     /* เปลี่ยนเป็น sticky เพื่อให้ Navbar อยู่บนสุดขณะเลื่อน */
+     top: 0;
+     z-index: 1000;
+     /* เพื่อให้ Navbar อยู่เหนือเนื้อหาอื่น */
+}
+
+.navbar {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 15px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.navbar .menu {
+     display: flex;
+     gap: 20px;
+     /* เพิ่มช่องว่างระหว่างเมนู */
+}
+
+.navbar a {
+     text-decoration: none;
+     color: #333;
+     font-weight: 500;
+     transition: color 0.3s ease;
+     /* เพิ่มแอนิเมชัน */
+}
+
+.navbar a:hover {
+     color: #007bff;
+     /* สีฟ้าเมื่อเมาส์ชี้ */
+}
+
+/* ปุ่มเมนูสำหรับมือถือ */
+.navbar .menu-toggle {
+     display: none;
+     font-size: 24px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+     .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px;
+     }
+
+     .navbar .menu {
+          display: none;
+          /* ซ่อนเมนูในตอนแรก */
+          flex-direction: column;
+          gap: 10px;
+          /* ปรับระยะห่างในโหมดมือถือ */
+          width: 100%;
+          text-align: left;
+          background: white;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          padding: 10px;
+     }
+
+     .navbar .menu.active {
+          display: flex;
+          /* แสดงเมนูเมื่อกดปุ่ม */
+     }
+
+     .navbar .menu-toggle {
+          display: block;
+          /* แสดงปุ่ม toggle */
+     }
+}
+
+.logo img {
+     height: 40px;
+}
+
+.nav-links {
+     display: flex;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     align-items: center;
+}
+
+.nav-links li {
+     position: relative;
+}
+
+.nav-links a {
+     color: #333;
+     text-decoration: none;
+     padding: 10px 15px;
+     display: block;
+     transition: color 0.3s;
+}
+
+.nav-links a:hover {
+     color: #28a745;
+}
+
+/* Dropdown styles */
+.dropdown {
+     position: relative;
+}
+
+.dropdown-content {
+     display: none;
+     position: absolute;
+     background: white;
+     min-width: 200px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     border-radius: 4px;
+     z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+     display: block;
+}
+
+.dropdown-content a {
+     padding: 12px 15px;
+}
+
+/* Update dropdown styles */
+.dropdown .btn {
+     background: white;
+     border: none;
+     padding: 0.5rem;
+     border-radius: 50%;
+     width: 32px;
+     height: 32px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.dropdown .btn:hover {
+     background: #f8f9fa;
+}
+
+.dropdown-menu {
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     padding: 0.5rem;
+}
+
+.dropdown-item.text-danger {
+     color: #dc3545 !important;
+     border-radius: 4px;
+     padding: 8px 12px;
+}
+
+.dropdown-item.text-danger:hover {
+     background-color: #fff5f5;
+}
+
+/* User Profile Styles */
+.user-profile {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     padding: 6px 15px;
+     border-radius: 25px;
+     background: #f8f9fa;
+     position: relative;
+     transition: background-color 0.3s;
+}
+
+.user-profile:hover {
+     background: #e9ecef;
+}
+
+.user-profile img {
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     object-fit: cover;
+     /* ทำให้ภาพเต็มในขอบเขตที่กำหนด */
+     border-bottom: none;
+     /* ลบขอบด้านล่าง */
+}
+
+li.nav-item.dropdown::marker {
+     content: none;
+     /* Removes the default marker */
+     display: none;
+     /* Hides the marker */
+}
+
+.user-name {
+     font-size: 14px;
+     color: #333;
+     font-weight: 500;
+}
+
+.user-menu {
+     display: none;
+     position: absolute;
+     top: 100%;
+     right: 0;
+     background: white;
+     border-radius: 8px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+     margin-top: 10px;
+     min-width: 220px;
+     z-index: 1000;
+}
+
+.user-profile:hover .user-menu {
+     display: block;
+}
+
+.menu-header {
+     padding: 15px 20px;
+     border-bottom: 1px solid #eee;
+     display: flex;
+     align-items: center;
+     gap: 12px;
+}
+
+.menu-header img {
+     width: 40px;
+     height: 40px;
+}
+
+.user-info h4 {
+     margin: 0;
+     font-size: 14px;
+     color: #333;
+}
+
+.user-info span {
+     font-size: 12px;
+     color: #666;
+}
+
+.user-menu ul {
+     list-style: none;
+     padding: 8px 0;
+     margin: 0;
+}
+
+.user-menu li {
+     padding: 10px 20px;
+     font-size: 14px;
+     color: #333;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     transition: background-color 0.3s;
+}
+
+.user-menu li:hover {
+     background-color: #f8f9fa;
+}
+
+.user-menu li i {
+     font-size: 16px;
+     color: #666;
+}
+
+.user-menu li.logout {
+     color: #dc3545;
+}
+
+.user-menu li.logout i {
+     color: #dc3545;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+     .user-name {
+          display: none;
+     }
+
+     .user-profile {
+          padding: 6px;
+     }
+
+     .notification-dropdown {
+          width: 280px;
+          right: -100px;
+     }
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+     display: none;
+     background: none;
+     border: none;
+     font-size: 24px;
+     padding: 5px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+     .mobile-menu-btn {
+          display: block;
+     }
+
+     .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: white;
+          flex-direction: column;
+          align-items: stretch;
+          padding: 10px 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     }
+
+     .nav-links.active {
+          display: flex;
+     }
+
+     .nav-links li {
+          width: 100%;
+     }
+
+     .nav-links a {
+          padding: 15px 20px;
+     }
+
+     .dropdown-content {
+          position: static;
+          box-shadow: none;
+          background: #f8f9fa;
+     }
+
+     .dropdown:hover .dropdown-content {
+          display: none;
+     }
+
+     .dropdown.active .dropdown-content {
+          display: block;
+     }
+
+     .user-section {
+          gap: 10px;
+     }
+}
+
+/* Slider Section Styles */
+.slider_section {
+     position: relative;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     padding: 45px 0;
+     background: #f8f9fa;
+}
+
+.long_section {
+     padding: 75px 0;
+}
+
+.carousel {
+     position: relative;
+     width: 100%;
+}
+
+.carousel-inner {
+     position: relative;
+     width: 100%;
+     overflow: hidden;
+}
+
+.carousel-item {
+     position: relative;
+     display: none;
+     width: 100%;
+     transition: transform 0.6s ease;
+}
+
+.carousel-item.active {
+     display: block;
+}
+
+.container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 15px;
+}
+
+.row {
+     display: flex;
+     flex-wrap: wrap;
+     margin: 0 -15px;
+     align-items: center;
+}
+
+.col-md-5 {
+     position: relative;
+     width: 41.666667%;
+     padding: 0 15px;
+}
+
+.col-md-7 {
+     position: relative;
+     width: 58.333333%;
+     padding: 0 15px;
+}
+
+.detail-box {
+     padding-right: 45px;
+}
+
+.detail-box h1 {
+     font-size: 3rem;
+     font-weight: bold;
+     margin-bottom: 25px;
+     line-height: 1.3;
+     color: #333;
+}
+
+.img-box {
+     position: relative;
+     overflow: hidden;
+     border-radius: 15px;
+     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.img-box img {
+     width: 100%;
+     height: auto;
+     display: block;
+     transition: transform 0.3s ease;
+}
+
+.img-box:hover img {
+     transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+     .slider_section {
+          min-height: auto;
+          padding: 60px 0;
+     }
+
+     .detail-box h1 {
+          font-size: 2.5rem;
+     }
+}
+
+@media (max-width: 768px) {
+     .row {
+          flex-direction: column;
+     }
+
+     .col-md-5,
+     .col-md-7 {
+          width: 100%;
+          margin-bottom: 30px;
+     }
+
+     .detail-box {
+          padding-right: 0;
+          text-align: center;
+          margin-bottom: 40px;
+     }
+
+     .detail-box h1 {
+          font-size: 2rem;
+     }
+
+     .img-box {
+          max-width: 80%;
+          margin: 0 auto;
+     }
+}
+
+@media (max-width: 576px) {
+     .slider_section {
+          padding: 40px 0;
+     }
+
+     .detail-box h1 {
+          font-size: 1.75rem;
+     }
+
+     .img-box {
+          max-width: 100%;
+     }
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+     from {
+          opacity: 0;
+          transform: translateY(20px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+.carousel-item.active .detail-box,
+.carousel-item.active .img-box {
+     animation: fadeIn 0.8s ease forwards;
+}
+
+.info-section {
+     padding: 80px 0;
+     background: #ffffff;
+}
+
+.info-section:nth-child(even) {
+     background: #f8f9fa;
+}
+
+.section-title {
+     text-align: center;
+     margin-bottom: 50px;
+}
+
+.section-title h2 {
+     font-size: 2.5rem;
+     color: #333;
+     margin-bottom: 20px;
+     font-weight: bold;
+}
+
+.section-title p {
+     color: #666;
+     font-size: 1.1rem;
+     max-width: 800px;
+     margin: 0 auto;
+}
+
+.info-grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 30px;
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 15px;
+}
+
+.info-card {
+     background: white;
+     border-radius: 10px;
+     padding: 25px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+     transform: translateY(-5px);
+}
+
+.info-card i {
+     font-size: 2.5rem;
+     color: #28a745;
+     margin-bottom: 20px;
+}
+
+.info-card h3 {
+     font-size: 1.5rem;
+     margin-bottom: 15px;
+     color: #333;
+}
+
+.info-card p {
+     color: #666;
+     line-height: 1.6;
+}
+
+.wave-info {
+     background: #f1f8ff;
+     padding: 40px;
+     border-radius: 15px;
+     margin-top: 50px;
+     max-width: 1200px;
+     margin: 50px auto 0;
+}
+
+.wave-info h3 {
+     color: #2b5797;
+     margin-bottom: 20px;
+}
+
+.wave-info p {
+     color: #444;
+     line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+     .info-grid {
+          grid-template-columns: repeat(2, 1fr);
+     }
+}
+
+@media (max-width: 768px) {
+     .section-title h2 {
+          font-size: 2rem;
+     }
+
+     .info-grid {
+          grid-template-columns: 1fr;
+     }
+
+     .wave-info {
+          padding: 25px;
+          margin: 30px 15px;
+     }
+}
+
+.wave-section {
+     background: linear-gradient(135deg, #f6f9fe 0%, #e3f2fd 100%);
+     padding: 80px 0;
+     position: relative;
+}
+
+.wave-container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 20px;
+}
+
+.wave-header h2 {
+     font-size: 2.5rem;
+     color: #1a365d;
+     margin-bottom: 20px;
+     text-align: center;
+}
+
+.wave-header p {
+     font-size: 1.2rem;
+     color: #4a5568;
+     text-align: center;
+     margin-bottom: 40px;
+}
+
+.info-grid,
+.feature-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     gap: 20px;
+     margin-top: 20px;
+}
+
+.info-card,
+.feature-card {
+     background: #ffffff;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     border-radius: 8px;
+     padding: 20px;
+     text-align: center;
+}
+
+.info-card h3,
+.feature-card h3 {
+     font-size: 1.5rem;
+     color: #2a4365;
+     margin-bottom: 10px;
+}
+
+.info-card p,
+.feature-card p {
+     font-size: 1rem;
+     color: #4a5568;
+     line-height: 1.6;
+}
+
+.feature-icon {
+     font-size: 2rem;
+     color: #3182ce;
+     margin-bottom: 10px;
+}
+
+.wave-details ul {
+     list-style: disc;
+     padding-left: 20px;
+     color: #4a5568;
+}
+
+.wave-details .info-box {
+     background: #edf2f7;
+     border-left: 4px solid #3182ce;
+     padding: 10px 15px;
+     margin-top: 20px;
+     color: #2c5282;
+}
+
+.feature-grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 40px;
+     margin-bottom: 60px;
+}
+
+.feature-card {
+     background: rgba(255, 255, 255, 0.9);
+     border-radius: 20px;
+     padding: 30px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+     border: 1px solid rgba(43, 87, 151, 0.1);
+}
+
+.feature-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 15px 35px rgba(43, 87, 151, 0.2);
+}
+
+.feature-icon {
+     width: 70px;
+     height: 70px;
+     background: #2b5797;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 20px;
+}
+
+.feature-icon i {
+     font-size: 2rem;
+     color: white;
+}
+
+.feature-content h3 {
+     font-size: 1.5rem;
+     color: #2d3748;
+     margin-bottom: 15px;
+}
+
+.feature-content p {
+     color: #4a5568;
+     line-height: 1.7;
+}
+
+.wave-details {
+     background: white;
+     border-radius: 20px;
+     padding: 40px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.wave-details h3 {
+     color: #2b5797;
+     font-size: 1.8rem;
+     margin-bottom: 25px;
+     border-bottom: 2px solid #e2e8f0;
+     padding-bottom: 15px;
+}
+
+.wave-details ul {
+     list-style: none;
+     padding: 0;
+}
+
+.wave-details li {
+     position: relative;
+     padding-left: 30px;
+     margin-bottom: 20px;
+     color: #4a5568;
+     line-height: 1.6;
+}
+
+.wave-details li:before {
+     content: "→";
+     position: absolute;
+     left: 0;
+     color: #2b5797;
+     font-weight: bold;
+}
+
+.info-box {
+     background: #e3f2fd;
+     border-left: 4px solid #2b5797;
+     padding: 20px;
+     margin-top: 30px;
+     border-radius: 0 10px 10px 0;
+}
+
+.info-box p {
+     margin: 0;
+     color: #2d3748;
+     font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+     .feature-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+     }
+
+     .wave-header h2 {
+          font-size: 2.3rem;
+     }
+}
+
+@media (max-width: 768px) {
+     .wave-section {
+          padding: 60px 0;
+     }
+
+     .wave-header h2 {
+          font-size: 2rem;
+     }
+
+     .feature-card {
+          padding: 25px;
+     }
+
+     .wave-details {
+          padding: 25px;
+     }
+}
+
+.footer {
+     background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+     color: white;
+     padding: 50px 0 20px;
+     position: relative;
+     overflow: hidden;
+}
+
+.footer::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 4px;
+     background: linear-gradient(90deg, #4CAF50, #81C784, #4CAF50);
+}
+
+.footer-container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 30px;
+     display: grid;
+     grid-template-columns: 1.5fr 1fr 1fr;
+     gap: 40px;
+}
+
+.section-title {
+     font-size: 1.25rem;
+     font-weight: 600;
+     margin-bottom: 20px;
+     color: #A5D6A7;
+     position: relative;
+     padding-bottom: 10px;
+}
+
+.section-title::after {
+     content: '';
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 40px;
+     height: 3px;
+     background: #A5D6A7;
+     border-radius: 2px;
+}
+
+.about-text {
+     line-height: 1.8;
+     color: #E8F5E9;
+     margin-bottom: 20px;
+}
+
+.contact-list {
+     list-style: none;
+     padding: 0;
+}
+
+.contact-item {
+     display: flex;
+     align-items: center;
+     margin-bottom: 15px;
+     transition: transform 0.2s;
+}
+
+.contact-item:hover {
+     transform: translateX(5px);
+}
+
+.contact-icon {
+     width: 20px;
+     margin-right: 12px;
+     color: #A5D6A7;
+}
+
+.quick-links {
+     list-style: none;
+     padding: 0;
+}
+
+.quick-links li {
+     margin-bottom: 12px;
+}
+
+.quick-links a {
+     color: #E8F5E9;
+     text-decoration: none;
+     transition: all 0.3s ease;
+     display: inline-block;
+     position: relative;
+}
+
+.quick-links a::after {
+     content: '';
+     position: absolute;
+     width: 0;
+     height: 2px;
+     bottom: -2px;
+     left: 0;
+     background-color: #A5D6A7;
+     transition: width 0.3s ease;
+}
+
+.quick-links a:hover {
+     color: #A5D6A7;
+     transform: translateX(5px);
+}
+
+.quick-links a:hover::after {
+     width: 100%;
+}
+
+.footer-bottom {
+     text-align: center;
+     padding-top: 20px;
+     margin-top: 30px;
+     border-top: 1px solid rgba(165, 214, 167, 0.2);
+     color: #A5D6A7;
+     font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+     .footer-container {
+          grid-template-columns: 1fr;
+          gap: 30px;
+     }
+
+     .section-title {
+          text-align: center;
+     }
+
+     .section-title::after {
+          left: 50%;
+          transform: translateX(-50%);
+     }
+
+     .contact-item {
+          justify-content: center;
+     }
+
+     .quick-links {
+          text-align: center;
+     }
+
+     .about-text {
+          text-align: center;
+     }
+}
+
+.post-card {
+     border: 1px solid #ddd;
+     border-radius: 8px;
+     padding: 15px;
+     margin-bottom: 20px;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     position: relative;
+}
+
+.post-content {
+     flex: 1;
+     overflow: hidden;
+     position: relative;
+}
+
+.post-image {
+     max-width: 100%;
+     height: 200px;
+     object-fit: cover;
+     margin: 10px 0;
+}
+
+.posts-container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     margin-top: 20px;
+     margin-bottom: 40px;
+     /* เพิ่มระยะห่างด้านล่างของ grid */
+}
+
+.post-header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-bottom: 15px;
+}
+
+.post-user-info {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+
+.post-user-details {
+     display: flex;
+     flex-direction: column;
+}
+
+.post-meta {
+     display: flex;
+     align-items: center;
+     gap: 5px;
+     color: #6c757d;
+     font-size: 0.875rem;
+}
+
+.post-actions {
+     margin-top: auto;
+     padding-top: 15px;
+     border-top: 1px solid #eee;
+}
+
+.comments-section {
+     margin-top: 10px;
+     max-height: 300px;
+     overflow-y: auto;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+     .posts-container {
+          grid-template-columns: repeat(2, 1fr);
+     }
+}
+
+@media (max-width: 576px) {
+     .posts-container {
+          grid-template-columns: 1fr;
+     }
+}
+
+/* เพิ่มส่วนนี้เพื่อจัดการระยะห่างด้านล่าง */
+.container {
+     margin-bottom: 60px;
+     /* เพิ่มระยะห่างด้านล่าง */
+}
+
+/* สไตล์สำหรับ footer space */
+.footer-space {
+     height: 40px;
+     /* พื้นที่ว่างด้านล่าง */
+     width: 100%;
+}
+
+.post-content p {
+     overflow: hidden;
+     text-overflow: ellipsis;
+     display: -webkit-box;
+     -webkit-line-clamp: 3;
+     /* จำนวนบรรทัดที่ต้องการแสดง */
+     -webkit-box-orient: vertical;
+     max-height: 4.5em;
+     /* ความสูงสูงสุด = จำนวนบรรทัด × line-height */
+     line-height: 1.5em;
+}
+
+.show-more-btn {
+     color: #0d6efd;
+     cursor: pointer;
+     margin-top: 5px;
+     display: none;
+}
+
+.post-content.expanded p {
+     -webkit-line-clamp: unset;
+     max-height: none;
+}
+
+.modal-content {
+     max-height: 80vh;
+     overflow-y: auto;
+}
+
+.full-content-modal .modal-body {
+     white-space: pre-wrap;
+     font-size: 16px;
+     line-height: 1.6;
+     padding: 20px;
+}
+
+/* เพิ่ม CSS ใหม่ */
+.main-container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 20px;
+}
+
+.create-post-section {
+     position: sticky;
+     top: 20px;
+     z-index: 100;
+     background: white;
+     border-radius: 12px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     margin-bottom: 30px;
+}
+
+.posts-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     gap: 20px;
+     padding: 20px 0;
+}
+
+.post-card {
+     background: white;
+     border-radius: 12px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.2s;
+     height: fit-content;
+}
+
+.post-card:hover {
+     transform: translateY(-5px);
+}
+
+.post-header {
+     padding: 15px;
+     border-bottom: 1px solid #eee;
+}
+
+.post-content {
+     padding: 15px;
+     min-height: 100px;
+}
+
+.post-image {
+     width: 100%;
+     height: 200px;
+     object-fit: cover;
+     border-radius: 8px;
+}
+
+.post-actions {
+     padding: 15px;
+     display: flex;
+     justify-content: space-between;
+     border-top: 1px solid #eee;
+}
+
+.comments-section {
+     max-height: 300px;
+     overflow-y: auto;
+     padding: 15px;
+     background: #f8f9fa;
+     border-radius: 0 0 12px 12px;
+}
+
+/* ปรับปรุง Responsive Design */
+@media (max-width: 768px) {
+     .posts-grid {
+          grid-template-columns: 1fr;
+     }
+
+     .main-container {
+          padding: 10px;
+     }
+}
+
+/* ปรับแต่งฟอร์มโพสต์ */
+.post-form {
+     padding: 20px;
+}
+
+.post-form textarea {
+     resize: none;
+     border-radius: 8px;
+}
+
+.post-form .form-control:focus {
+     box-shadow: none;
+     border-color: #0d6efd;
+}
+
+/* ปรับแต่ง Modal */
+.modal-content {
+     border-radius: 12px;
+}
+
+.modal-body {
+     padding: 20px;
+}
+
+/* เพิ่ม CSS ใหม่ */
+.main-content {
+     max-width: 1000px;
+     margin: 0 auto;
+     padding: 20px;
+}
+
+.create-post {
+     background: white;
+     border-radius: 15px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     margin-bottom: 30px;
+     padding: 20px;
+}
+
+.create-post textarea {
+     border: 1px solid #e1e1e1;
+     border-radius: 10px;
+     padding: 15px;
+     min-height: 100px;
+     margin-bottom: 15px;
+}
+
+.posts-feed {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+.post-card {
+     background: white;
+     border-radius: 15px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     transition: transform 0.2s;
+}
+
+.post-header {
+     padding: 15px 20px;
+     border-bottom: 1px solid #f0f0f0;
+}
+
+.post-content {
+     padding: 20px;
+     font-size: 15px;
+     line-height: 1.6;
+}
+
+.post-image {
+     width: 100%;
+     max-height: 400px;
+     object-fit: cover;
+}
+
+.post-actions {
+     padding: 15px 20px;
+     border-top: 1px solid #f0f0f0;
+     display: flex;
+     gap: 15px;
+}
+
+.action-btn {
+     padding: 8px 15px;
+     border-radius: 20px;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
+     gap: 5px;
+}
+
+.comments-section {
+     border-top: 1px solid #f0f0f0;
+     padding: 20px;
+     background: #f8f9fa;
+}
+
+/* เพิ่ม CSS ใหม่สำหรับส่วนโพสต์ */
+.feed-container {
+     max-width: 1000px;
+     /* เพิ่มจาก 750px เป็น 1000px */
+     margin: 0 auto;
+     padding: 20px;
+}
+
+.post-composer {
+     background: #fff;
+     border-radius: 12px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     padding: 20px;
+     margin-bottom: 30px;
+}
+
+.post-composer textarea {
+     border: none;
+     resize: none;
+     font-size: 16px;
+     min-height: 120px;
+     margin-bottom: 15px;
+     padding: 0;
+}
+
+.post-composer textarea:focus {
+     outline: none;
+     box-shadow: none;
+}
+
+.post-tools {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding-top: 10px;
+     border-top: 1px solid #eee;
+}
+
+.post-card {
+     width: 100%;
+     background: #fff;
+     border-radius: 12px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     margin-bottom: 20px;
+     overflow: hidden;
+}
+
+.post-header {
+     padding: 15px 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+
+.post-user {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+}
+
+.post-user img {
+     width: 45px;
+     height: 45px;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+.post-content {
+     padding: 5px 20px 15px;
+     font-size: 15px;
+     line-height: 1.5;
+}
+
+.post-image-container {
+     position: relative;
+     width: 100%;
+     max-height: 500px;
+     overflow: hidden;
+}
+
+.post-image {
+     width: 100%;
+     height: auto;
+     object-fit: contain;
+}
+
+.post-actions {
+     padding: 12px 20px;
+     border-top: 1px solid #f0f0f0;
+     display: flex;
+     gap: 20px;
+}
+
+.action-btn {
+     background: none;
+     border: none;
+     color: #666;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     padding: 6px 12px;
+     border-radius: 20px;
+     transition: all 0.2s;
+}
+
+.action-btn:hover {
+     background: #f8f9fa;
+}
+
+.action-btn.liked {
+     color: #dc3545;
+}
+
+.comments-section {
+     background: #f8f9fa;
+     padding: 15px 20px;
+     border-top: 1px solid #eee;
+}
+
+.post-card {
+     cursor: pointer;
+}
+
+.modal-post-content {
+     padding: 0;
+}
+
+.modal-post-header {
+     padding: 20px;
+     border-bottom: 1px solid #eee;
+}
+
+.modal-post-body {
+     padding: 20px;
+}
+
+.modal-post-image {
+     width: 100%;
+     max-height: 500px;
+     object-fit: contain;
+}
+
+.modal-comments {
+     max-height: 300px;
+     overflow-y: auto;
+     padding: 20px;
+     background: #f8f9fa;
+}
+
+.modal-dialog-wide {
+     max-width: 800px;
+     /* ขยายความกว้าง modal */
+     width: 90%;
+     margin: 1.75rem auto;
+}
+
+.modal-post-content {
+     min-height: 80vh;
+     /* เพิ่มความสูงขั้นต่ำ */
+     display: flex;
+     flex-direction: column;
+}
+
+.modal-comments-section {
+     flex: 1;
+     overflow-y: auto;
+     padding: 20px;
+     background: #f8f9fa;
+     border-top: 1px solid #eee;
+     max-height: 400px;
+}
+
+.modal-comment-form {
+     padding: 15px 20px;
+     background: white;
+     border-top: 1px solid #eee;
+}
+
+.post-detail-content {
+     padding: 20px;
+     font-size: 16px;
+     line-height: 1.6;
+}
+
+.modal-dialog-post {
+     max-width: 800px;
+     margin: 1.75rem auto;
+}
+
+.modal-post-content {
+     display: flex;
+     flex-direction: column;
+     max-height: 90vh;
+}
+
+.modal-post-body {
+     display: flex;
+     flex-direction: column;
+     padding: 0;
+}
+
+.modal-post-image-container {
+     width: 100%;
+     max-height: 60vh;
+     overflow: hidden;
+     background: #000;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.modal-post-image {
+     max-width: 100%;
+     max-height: 60vh;
+     object-fit: contain;
+}
+
+.modal-post-text {
+     padding: 20px;
+     font-size: 16px;
+     line-height: 1.6;
+}
+
+.modal-comments-section {
+     flex: 1;
+     max-height: 300px;
+     overflow-y: auto;
+     padding: 15px;
+     background: #f8f9fa;
+     border-top: 1px solid #eee;
+}
+
+.modal-comment-form {
+     padding: 15px;
+     background: white;
+     border-top: 1px solid #eee;
+}
+
+.modal-comment-input {
+     border-radius: 20px;
+     padding: 8px 15px;
+}
+
+.comment-item {
+     padding: 10px;
+     border-bottom: 1px solid #eee;
+     animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+     from {
+          opacity: 0;
+          transform: translateY(10px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+.post-card {
+     background: #fff;
+     border: 1px solid rgba(0, 0, 0, .125);
+     transition: all 0.3s ease;
+}
+
+.post-card:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.post-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.post-content p {
+     font-size: 1rem;
+     line-height: 1.5;
+     color: #212529;
+}
+
+.post-actions button {
+     font-size: 0.9rem;
+     padding: 0.25rem 1rem;
+}
+
+.comments-section {
+     background-color: #f8f9fa;
+}
+
+.comment {
+     padding: 1rem;
+     border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.comment:last-child {
+     border-bottom: none;
+}
+
+.post-composer {
+     background: white;
+     padding: 1rem;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     margin-bottom: 2rem;
+}
+
+#image-preview-container {
+     margin-top: 10px;
+     padding: 10px;
+     border-radius: 4px;
+     background-color: #f8f9fa;
+}
+
+#image-preview {
+     border-radius: 4px;
+}
+
+.btn-close {
+     opacity: 0.8;
+     border-radius: 50%;
+     margin: 5px;
+}
+
+.btn-close:hover {
+     opacity: 1;
+     background-color: #dc3545;
+     color: white;
+}
+
+.post-composer {
+     transition: box-shadow 0.3s ease;
+}
+
+.post-composer:focus-within {
+     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.post-tools .btn-link {
+     color: #6c757d;
+}
+
+.post-tools .btn-link:hover {
+     color: #0d6efd;
+}
+
+#link-input-container .input-group {
+     border: 1px solid #ced4da;
+     border-radius: 0.25rem;
+}
+
+/* เพิ่มสไตล์สำหรับลิงก์ในโพสต์ */
+.post-content a,
+.modal-post-text a {
+     color: #0d6efd;
+     text-decoration: none;
+}
+
+.post-content a:hover,
+.modal-post-text a:hover {
+     text-decoration: underline;
+}
+
+.post-card {
+     background: white;
+     transition: all 0.2s ease-in-out;
+}
+
+.post-card:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.post-content img {
+     transition: opacity 0.2s ease-in-out;
+}
+
+.post-content img:hover {
+     opacity: 0.95;
+}
+
+.post-actions .btn {
+     border-radius: 20px;
+     padding: 0.375rem 1rem;
+}
+
+.post-header img {
+     transition: transform 0.2s ease-in-out;
+}
+
+.post-header img:hover {
+     transform: scale(1.05);
+}
+
+#postDetailModal .modal-content {
+     max-height: 90vh;
+     overflow-y: auto;
+}
+
+#postDetailModal .comments-section {
+     max-height: 400px;
+     overflow-y: auto;
+}
+
+#postDetailModal .post-text-content {
+     white-space: pre-wrap;
+     word-break: break-word;
+}
+
+#postDetailModal .modal-header {
+     padding: 1rem;
+     border-bottom: 1px solid #dee2e6;
+}
+
+#postDetailModal .post-user-img {
+     width: 45px;
+     height: 45px;
+     object-fit: cover;
+}
+
+#postDetailModal .post-user-name {
+     margin: 0;
+     font-size: 1rem;
+     color: #333;
+}
+
+#postDetailModal .post-date {
+     font-size: 0.875rem;
+     color: #6c757d;
+}
+
+#postDetailModal .modal-body {
+     padding: 1rem;
+}
+
+.delete-comment {
+     padding: 0;
+     background: none;
+     border: none;
+     opacity: 0.7;
+     transition: opacity 0.2s ease;
+}
+
+.delete-comment:hover {
+     opacity: 1;
+}
+
+.comment:hover .delete-comment {
+     visibility: visible;
+}
+
+/* Edit Modal Styles */
+#editPostModal .modal-dialog {
+     max-width: 800px;
+     width: 90%;
+}
+
+#editPostModal .modal-content {
+     min-height: 60vh;
+}
+
+#editPostModal .modal-body {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+#editPostContent {
+     min-height: 200px;
+     resize: vertical;
+     font-size: 16px;
+     line-height: 1.5;
+     padding: 15px;
+}
+
+#editImagePreview {
+     padding: 15px;
+     background: #f8f9fa;
+     border-radius: 8px;
+}
+
+#editImagePreview img {
+     max-width: 100%;
+     height: auto;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-tools {
+     display: flex;
+     gap: 15px;
+     padding: 15px;
+     background: #f8f9fa;
+     border-radius: 8px;
+     margin-top: 10px;
+}
+
+.edit-tools .action-btn {
+     padding: 8px 15px;
+     border-radius: 20px;
+     transition: all 0.2s;
+     cursor: pointer;
+}
+
+.edit-tools .action-btn:hover {
+     background: #e9ecef;
+}

@@ -1,0 +1,158 @@
+/* ใช้ฟอนต์จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+/* กำหนดการตั้งค่าเบื้องต้น */
+body {
+     font-family: 'Kanit', sans-serif;
+     background-color: #f1f1f1;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+}
+
+.login-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background-color: #fff;
+     border-radius: 8px;
+     width: 80%;
+     max-width: 1000px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+     padding: 40px;
+     width: 50%;
+}
+
+h2 {
+     font-size: 28px;
+     margin-bottom: 20px;
+     color: #333;
+     font-weight: 700;
+}
+
+input[type="text"],
+input[type="password"] {
+     width: 100%;
+     padding: 12px;
+     margin: 10px 0;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     font-size: 16px;
+     color: #333;
+     box-sizing: border-box;
+     transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+     border-color: #4CAF50;
+     outline: none;
+}
+
+button {
+     width: 100%;
+     padding: 12px;
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     font-size: 16px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+}
+
+button:hover {
+     background-color: #45a049;
+}
+
+p {
+     margin-top: 20px;
+     font-size: 14px;
+     color: #555;
+}
+
+a {
+     color: #4CAF50;
+     text-decoration: none;
+}
+
+a:hover {
+     text-decoration: underline;
+}
+
+.login-image {
+     width: 50%;
+     text-align: center;
+}
+
+.login-image img {
+     max-width: 80%;
+     height: auto;
+}
+
+/* Styling สำหรับ error message */
+.error-message {
+     color: red;
+     font-size: 0.875em;
+     margin-top: 0.25rem;
+}
+
+/* Styling สำหรับแสดงรูปโปรไฟล์ตัวอย่าง */
+.profile-preview {
+     max-width: 200px;
+     max-height: 200px;
+     margin-top: 10px;
+}
+
+/* เพิ่มการจัดตำแหน่งของฟอร์มให้ดูเรียบร้อย */
+.container {
+     padding-top: 5rem;
+     padding-bottom: 5rem;
+}
+
+.card {
+     border-radius: 10px;
+}
+
+.card-header {
+     font-size: 1.25rem;
+     font-weight: bold;
+}
+
+.card-body {
+     background-color: #f8f9fa;
+}
+
+.form-label {
+     font-size: 1em;
+     font-weight: bold;
+}
+
+/* ปรับการแสดงผลของปุ่ม */
+.d-grid .btn {
+     font-size: 1.1em;
+     padding: 0.75rem;
+}
+
+/* สไตล์สำหรับช่องกรอกข้อมูล */
+input.form-control {
+     font-size: 1em;
+     padding: 0.75rem;
+}
+
+/* ปรับความกว้างของฟอร์มในแต่ละหน้าจอ */
+@media (max-width: 768px) {
+     .col-md-8 {
+          width: 100%;
+     }
+
+     .col-lg-6 {
+          width: 100%;
+     }
+}
